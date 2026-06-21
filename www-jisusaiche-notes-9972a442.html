@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极速赛车 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(135deg, #0f1724 0%, #1b2838 60%, #2a3a4e 100%);
+            color: #e2e9f2;
+            padding: 4rem 2rem 3.2rem;
+            text-align: center;
+            border-bottom: 3px solid #3f5c7a;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: repeating-linear-gradient(
+                90deg,
+                #3f7bb0 0px, #3f7bb0 20px,
+                transparent 20px, transparent 30px
+            );
+            opacity: 0.35;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 650;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            color: #f0f6ff;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        .hero .tagline {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 0.5rem;
+            color: #b4c8de;
+            font-weight: 400;
+        }
+        .hero .meta-note {
+            font-size: 0.85rem;
+            color: #7a93b0;
+            margin-top: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+        /* 浅色正文区 */
+        .content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            flex: 1;
+            background: #ffffff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border-radius: 0 0 12px 12px;
+        }
+        .content section {
+            margin-bottom: 2.8rem;
+        }
+        .content section:last-child {
+            margin-bottom: 0;
+        }
+        .intro-paragraph {
+            font-size: 1.05rem;
+            margin-bottom: 1.8rem;
+            padding: 0 0.2rem;
+        }
+        .intro-paragraph strong {
+            color: #1f3a5f;
+        }
+        .emphasize-link {
+            color: #1f6390;
+            text-decoration: none;
+            font-weight: 520;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .emphasize-link:hover {
+            color: #0d3b5e;
+            border-bottom-color: #1f6390;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 1rem;
+        }
+        .feature-card {
+            background: #f8faff;
+            border-left: 4px solid #3f7bb0;
+            padding: 1.2rem 1.4rem 1.4rem;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 8px rgba(0, 20, 40, 0.06);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .feature-card:hover {
+            background: #f0f6fe;
+            transform: translateY(-2px);
+        }
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            color: #1f3a5f;
+            font-weight: 600;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #2c3e4e;
+            margin-bottom: 0;
+        }
+        .scenario-block {
+            background: #f2f6fc;
+            padding: 1.6rem 1.8rem;
+            border-radius: 10px;
+            margin: 1.8rem 0;
+        }
+        .scenario-block h2 {
+            font-size: 1.3rem;
+            font-weight: 550;
+            margin-bottom: 0.8rem;
+            color: #1f3a5f;
+        }
+        .scenario-block p {
+            color: #2b3c4c;
+            margin-bottom: 0.5rem;
+        }
+        .faq-mini {
+            list-style: none;
+            padding: 0;
+        }
+        .faq-mini li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #e3e9f1;
+        }
+        .faq-mini li:last-child {
+            border-bottom: none;
+        }
+        .faq-mini .q {
+            font-weight: 550;
+            color: #1a3148;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+        .faq-mini .a {
+            font-size: 0.95rem;
+            color: #3b4f63;
+        }
+        .closing-note {
+            margin-top: 2.2rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #dce3ed;
+            font-size: 0.98rem;
+            color: #3a4d60;
+            text-align: center;
+        }
+        .closing-note a {
+            color: #1f6390;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .closing-note a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 1.8rem 2rem 1.2rem;
+            color: #6a7d92;
+            font-size: 0.85rem;
+            background: #eef2f7;
+            border-top: 1px solid #d7dfe9;
+        }
+        footer a {
+            color: #3f6f94;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero { padding: 2.8rem 1.2rem 2.4rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .content { padding: 2rem 1.2rem 3rem; }
+            .feature-grid { gap: 1.2rem; }
+            .scenario-block { padding: 1.2rem; }
+        }
+        @media (max-width: 480px) {
+            .hero .tagline { font-size: 1rem; }
+            .feature-card p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>极速赛车</h1>
+        <p class="tagline">赛道 · 数据 · 视野</p>
+        <p class="meta-note">一个聚焦赛车资讯与动态的平台入口</p>
+    </header>
+
+    <main class="content">
+        <!-- 开篇短句 + 承接段落 -->
+        <section>
+            <p class="intro-paragraph">
+                赛车运动的核心在于毫秒之间的决策与机械极限的博弈。<strong>极速赛车</strong> 正是围绕这一领域，
+                将赛事资讯、技术解读与行业观察汇集于一处的信息节点。站点内容覆盖方程式、GT 耐力赛、电动方程式及衍生赛事，
+                并持续关注车手动态、车队策略与规则演变。
+            </p>
+            <p class="intro-paragraph">
+                站内信息组织以赛季为轴，辅以技术专栏与赛事数据简析。无论是资深车迷还是刚接触赛车运动的新读者，
+                都能在 <a href="https://www-jisusaiche.com" class="emphasize-link">极速赛车</a> 找到结构化的阅读路径。
+                站点不设夸张标题或诱导性跳转，以平实、专业的态度呈现赛车世界的剖面。
+            </p>
+        </section>
+
+        <!-- 特点列表（卡片） -->
+        <section>
+            <h2 style="font-size:1.25rem; font-weight:550; color:#1f3a5f; margin-bottom:0.2rem;">内容特点</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>赛季追踪</h3>
+                    <p>以全年赛历为线索，整合分站赛前瞻、赛后简报与积分变化，保持信息连续性。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>技术注解</h3>
+                    <p>从空力套件到动力单元，以可读性较高的方式解释关键技术规则与演变。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>车手档案</h3>
+                    <p>整理现役及传奇车手的职业生涯数据、分站胜率与代表性赛季表现。</p>
+                </div>
+                <div class="feature-card">
+                    <h3>赛事数据</h3>
+                    <p>提供排位赛、正赛圈速及进站策略等基础数据摘要，辅助理解比赛走势。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 场景 / 适用读者 -->
+        <section class="scenario-block">
+            <h2>常见使用场景</h2>
+            <p>· 周末大赛前快速浏览本站前瞻，了解赛道特性与轮胎配方变化。</p>
+            <p>· 赛后查阅简报与关键数据，对比车手分段成绩与进站窗口。</p>
+            <p>· 利用技术注解栏目补全对 DRS、ERS 或轮胎衰减策略的认知。</p>
+            <p>· 新赛季开始前通过车手档案回顾上一年度竞争格局。</p>
+            <p>站点内容保持定期更新，但非实时直播类平台，适合作为信息补充与背景阅读。</p>
+        </section>
+
+        <!-- FAQ 摘要 (温和提示) -->
+        <section>
+            <h2 style="font-size:1.15rem; font-weight:550; color:#1f3a5f; margin-bottom:0.6rem;">常见疑问摘要</h2>
+            <ul class="faq-mini">
+                <li>
+                    <span class="q">内容更新频率如何？</span>
+                    <span class="a">赛季期间一般每站比赛前后更新 1–2 篇重点内容，休赛期以技术回顾和档案整理为主。</span>
+                </li>
+                <li>
+                    <span class="q">是否需要注册或付费？</span>
+                    <span class="a">本站为公开信息站点，目前无需注册或付费即可浏览全部内容。</span>
+                </li>
+                <li>
+                    <span class="q">是否有视频或直播内容？</span>
+                    <span class="a">站点以图文为主，不提供赛事直播或视频流，专注文字与数据整合。</span>
+                </li>
+                <li>
+                    <span class="q">导航和搜索功能？</span>
+                    <span class="a">通过顶部导航可按赛季、技术、档案等分类浏览，站内搜索支持关键词定位。</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 温和结尾 + 再次自然链接 -->
+        <div class="closing-note">
+            <p>
+                若想直接从当前页面跳转至主站，可前往 <a href="https://www-jisusaiche.com">极速赛车</a> 浏览最新内容。
+                站点持续迭代，欢迎以开放的心态探索赛车的技术与叙事。
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>内容索引 · <a href="https://www-jisusaiche.com">极速赛车</a> · 简洁专业 信息为本</p>
+        <p style="margin-top:0.4rem; opacity:0.65;">&copy; 2025 · 站点介绍页</p>
+    </footer>
+</body>
+</html>
